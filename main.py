@@ -25,12 +25,19 @@ operations = {
 
 num1 = int(input("What's the first number? "))
 
-for sign in operations:
-  print(sign)
-operation_sign = input('Pick an operation from the line above ')
-num2 = int(input("What's the second number? "))
+conticalc = True
+while conticalc:
+  for sign in operations:
+    print(sign)
+  operation_sign = input('Pick an operation from the line above ')
+  num2 = int(input("What's the next number? "))
 
-calculation_function = operations[operation_sign]
-answer = calculation_function(num1, num2)
+  calculation_function = operations[operation_sign]
+  answer = calculation_function(num1, num2)
 
-print(f"{num1} {operation_sign} {num2} = {answer}")
+  print(f"{num1} {operation_sign} {num2} = {answer}")
+
+  if input("Do you wanna keep calculating using {answer}? Y or N ").lower() == 'y':
+    num1 = answer
+  else:
+    conticalc = False
